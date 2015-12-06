@@ -1,4 +1,4 @@
-﻿@model NonJSForm.ViewModels.RecipieViewModel
+﻿@model NonJSForm.ViewModels.RecipeViewModel
 @using NonJSForm.Constants
 @{
     ViewBag.Title = "Home Page";
@@ -9,7 +9,7 @@
     <div>
         <div>
             @Html.TextBoxFor(model => model.IngredientSearch)
-            <button type="submit" class="button" name="AddLocations" value="SearchLocations">Find address</button>
+            <button type="submit" class="button" name="Ingredients" value="SearchIngredients">Find address</button>
         </div>
 
         @if (Model.IngredientSearchResults.Any())

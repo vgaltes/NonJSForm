@@ -8,7 +8,7 @@
         public int Ammount { get; set; }
     }
 
-    public class RecipieViewModel
+    public class RecipeViewModel
     {
         public string IngredientSearch { get; set; }
         public List<string> IngredientSearchResults { get; set; }
