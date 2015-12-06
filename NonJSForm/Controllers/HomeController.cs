@@ -48,7 +48,7 @@
 
         [HttpPost]
         [MultipleFormActionsButtonWithParameter(SubmitButtonActionName = "SpecifyIngredients")]
-        [FillParamterFromActionName(ParameterName = "ingredientIndex", ParameterType = TypeCode.Int32, SubmitButtonActionName = "SpecifyIngredients")]
+        [FillParameterFromActionName(ParameterName = "ingredientIndex", ParameterType = TypeCode.Int32, SubmitButtonActionName = "SpecifyIngredients")]
         public ActionResult UseIngredient(RecipeViewModel viewModel, int ingredientIndex)
         {
             viewModel.IngredientSearchResults = GetSearchResults();
@@ -56,6 +56,18 @@
                 viewModel.Ingredients = new List<IngredientViewModel>();
 
             viewModel.Ingredients.Add(new IngredientViewModel {Ammount = 0, Name = viewModel.IngredientSearchResults[ingredientIndex]});
+
+            return View("Index", viewModel);
+        }
+
+        [HttpPost]
+        [MultipleFormActionsButtonWithParameter(SubmitButtonActionName = "SpecifyIngredients")]
+        [FillParameterFromActionName(ParameterName = "ingredientIndex", ParameterType = TypeCode.Int32, SubmitButtonActionName = "SpecifyIngredients")]
+        public ActionResult RemoveIngredient(RecipeViewModel viewModel, int ingredientIndex)
+        {
+            viewModel.IngredientSearchResults = GetSearchResults();
+            
+            viewModel.Ingredients.RemoveAt(ingredientIndex);
 
             return View("Index", viewModel);
         }

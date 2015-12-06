@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    public class FillParamterFromActionName : ActionFilterAttribute
+    public class FillParameterFromActionName : ActionFilterAttribute
     {
         public string ParameterName { get; set; }
 
