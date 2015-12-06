@@ -1,5 +1,6 @@
 ﻿namespace NonJSForm.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
     using Attributes;
@@ -20,7 +21,7 @@
         }
 
         [HttpPost]
-        [MultipleFormActionsButton(SubmitButtonActionName = "Ingredients")]
+        [MultipleFormActionsButton(SubmitButtonActionName = "SpecifyIngredients")]
         public ActionResult SearchIngredients()
         {
             var viewModel = new RecipeViewModel
@@ -33,7 +34,7 @@
         }
 
         [HttpPost]
-        [MultipleFormActionsButton(SubmitButtonActionName = "Ingredients")]
+        [MultipleFormActionsButton(SubmitButtonActionName = "SpecifyIngredients")]
         public ActionResult ClearIngredients()
         {
             var viewModel = new RecipeViewModel
@@ -43,6 +44,27 @@
             };
 
             return View("Index", viewModel);
+        }
+
+        [HttpPost]
+        [MultipleFormActionsButtonWithParameter(SubmitButtonActionName = "SpecifyIngredients")]
+        [FillParamterFromActionName(ParameterName = "ingredientIndex", ParameterType = TypeCode.Int32, SubmitButtonActionName = "SpecifyIngredients")]
+        public ActionResult UseIngredient(RecipeViewModel viewModel, int ingredientIndex)
+        {
+            viewModel.IngredientSearchResults = GetSearchResults();
+            if (viewModel.Ingredients == null) 
+                viewModel.Ingredients = new List<IngredientViewModel>();
+
+            viewModel.Ingredients.Add(new IngredientViewModel {Ammount = 0, Name = viewModel.IngredientSearchResults[ingredientIndex]});
+
+            return View("Index", viewModel);
+        }
+
+        [HttpPost]
+        [MultipleFormActionsButton(SubmitButtonActionName = "SpecifyIngredients")]
+        public ActionResult AddIngredients(RecipeViewModel viewModel)
+        {
+            return View("Recipe", viewModel.Ingredients);
         }
 
         private List<string> GetSearchResults()

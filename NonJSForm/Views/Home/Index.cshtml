@@ -9,7 +9,7 @@
     <div>
         <div>
             @Html.TextBoxFor(model => model.IngredientSearch)
-            <button type="submit" class="button" name="Ingredients" value="SearchIngredients">Find address</button>
+            <button type="submit" class="button" name="SpecifyIngredients" value="SearchIngredients">Find address</button>
         </div>
 
         @if (Model.IngredientSearchResults.Any())
@@ -32,7 +32,7 @@
                                     @{
                                         var buttonName = "UseIngredient-" + @i;
                                     }
-                                    <button id="useLocation" type="submit" name="AddLocations" value="@buttonName">Use ingredient</button>
+                                    <button id="useIngredient" type="submit" name="SpecifyIngredients" value="@buttonName">Use ingredient</button>
                                 </td>
                             </tr>
                         }
@@ -65,15 +65,17 @@
                             <tr>
                                 <td>
                                     @ingredient.Name
+                                    @Html.HiddenFor(m => Model.Ingredients[i].Name, new { @id = "ingredients_" + i + "__name", Name = "Ingredients[" + i + "].Name" })
+
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Ingredients[i].Ammount, new { @id = "ingredients_" + i + "__ammount", Name = "Ingredients[" + i + "].Ammount" })
+                                    @Html.TextBoxFor(m => Model.Ingredients[i].Ammount, new { @id = "ingredients_" + i + "__ammount", Name = "Ingredients[" + i + "].Ammount" })
                                 </td>
                                 <td>
                                     @{
                                         var buttonName = "RemoveIngredient-" + i;
                                     }
-                                    <button id="removeIngredient" type="submit" name="RemoveIngredient" value="@buttonName">Remove</button>
+                                    <button id="removeIngredient" type="submit" name="SpecifyIngredients" value="@buttonName">Remove</button>
                                 </td>
                             </tr>
                         }
@@ -83,7 +85,7 @@
             </div>
         }
 
-      <button type="submit" class="button" name="Ingredients" value="AddIngredients">Save and continue</button>
-      <button type="submit" class="button" name="Ingredients" value="ClearIngredients">Clear</button>
+      <button type="submit" class="button" name="SpecifyIngredients" value="AddIngredients">Save and continue</button>
+      <button type="submit" class="button" name="SpecifyIngredients" value="ClearIngredients">Clear</button>
     </div>
 }

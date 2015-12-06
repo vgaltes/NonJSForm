@@ -1,0 +1,34 @@
+﻿@model List<NonJSForm.ViewModels.IngredientViewModel>
+
+@{
+    ViewBag.Title = "Recipe";
+}
+
+<h2>Recipe</h2>
+
+<table class="no-btm-margin">
+    <colgroup>
+        <col style="width: 50%">
+        <col style="width: 30%">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Ammount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var ingredient in Model)
+        {
+            <tr>
+                <td>
+                    @ingredient.Name
+                </td>
+                <td>
+                    @ingredient.Ammount
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
