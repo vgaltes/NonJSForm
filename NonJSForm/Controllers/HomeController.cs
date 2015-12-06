@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace NonJSForm.Controllers
+﻿namespace NonJSForm.Controllers
 {
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+    using ViewModels;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new RecipieViewModel
+            {
+                Ingredients = new List<IngredientViewModel>(),
+                IngredientSearchResults = new List<string>()
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()

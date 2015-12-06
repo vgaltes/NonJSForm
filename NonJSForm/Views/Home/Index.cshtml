@@ -7,8 +7,8 @@
 @using (Html.BeginRouteForm(RouteNames.Recipies, FormMethod.Post))
 {
     <div>
-        <div form-group>
-            @Html.TextBoxFor(model => model.IngredientSearch);
+        <div>
+            @Html.TextBoxFor(model => model.IngredientSearch)
             <button type="submit" class="button" name="AddLocations" value="SearchLocations">Find address</button>
         </div>
 
@@ -83,9 +83,7 @@
             </div>
         }
 
-        @if (Model.Ingredients != null && Model.Ingredients.Any())
-        {
-            <button type="submit" class="button" name="AddLocations" value="Locations">Save and continue</button>
-        }
+      <button type="submit" class="button" name="AddIngredients" value="Ingredients">Save and continue</button>
+      <button type="submit" class="button" name="ClearIngredients" value="Ingredients">Clear</button>
     </div>
 }
