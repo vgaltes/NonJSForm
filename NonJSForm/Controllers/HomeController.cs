@@ -32,6 +32,19 @@
             return View("Index", viewModel);
         }
 
+        [HttpPost]
+        [MultipleFormActionsButton(SubmitButtonActionName = "Ingredients")]
+        public ActionResult ClearIngredients()
+        {
+            var viewModel = new RecipeViewModel
+            {
+                Ingredients = new List<IngredientViewModel>(),
+                IngredientSearchResults = new List<string>()
+            };
+
+            return View("Index", viewModel);
+        }
+
         private List<string> GetSearchResults()
         {
             return new List<string>
