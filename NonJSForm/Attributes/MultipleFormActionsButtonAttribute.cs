@@ -4,7 +4,7 @@ namespace NonJSForm.Attributes
     using System.Reflection;
     using System.Web.Mvc;
 
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Method)]
     public class MultipleFormActionsButtonAttribute : ActionNameSelectorAttribute
     {
         public string SubmitButtonActionName { get; set; }
